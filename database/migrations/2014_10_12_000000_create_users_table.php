@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('phone')->unique()->nullable();
             $table->string('password')->nullable();
-            $table->
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

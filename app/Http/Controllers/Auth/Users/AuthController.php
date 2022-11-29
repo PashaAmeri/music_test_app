@@ -15,15 +15,12 @@ class AuthController extends Controller
         
         User::create([
             'role' => ROLE_USER,
-            'phone' => $request->only('phone')
+            'phone' => $request->phone
         ]);
 
-        // return $response = (new \GuzzleHttp\Client)->post(route('services.otp.generate'), [
-        //     'phone' => $request->only('phone')
-        // ]);
-
-        return $response = Http::post(route('services.otp.generate'),[
-            'phone' => $request->only('phone')
+        // TODO: change http://127.0.0.1:8080/api/service/sendCode to route('services.otp.generate')
+        return $response = Http::post('http://127.0.0.1:8080/api/service/otp/sendCode',[
+            'phone' => $request->phone
         ]);
     }
 

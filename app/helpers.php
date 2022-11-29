@@ -4,7 +4,7 @@ const ROLE_USER = '3';
 const ROLE_ARTIST = '2';
 const ROLE_ADMIN = '1';
 
-function RandomString(int $lenth = 6, string $type = NULL)
+function randomString(int $lenth = 6, string $type = NULL)
 {
 
     switch ($type) {

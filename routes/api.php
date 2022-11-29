@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\Users\AuthController;
+use App\Services\OtpService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+
+Route::prefix('service')->group(function() {
+
+    Route::prefix('otp')->group(function() {
+
+        Route::post('/sendCode', [OtpService::class, 'generateCode'])->name('services.otp.generate');
+    });
+});
 
 Route::middleware('auth:sanctume')->group(function() {
 
